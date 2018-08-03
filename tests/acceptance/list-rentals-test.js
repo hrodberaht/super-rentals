@@ -23,7 +23,14 @@ module("Acceptance | list rentals", function(hooks) {
     assert.equal(currentURL(), "/contact", "should navigate to contact");
   });
 
-  test("should list available rentals.", async function(assert) {});
+  test("should list available rentals.", async function(assert) {
+    await visit("/");
+    await assert.equal(
+      this.element.querySelectorAll(".listing").length,
+      3,
+      "should return 3 rental offers"
+    );
+  });
 
   test("should filter the list of rentals by city.", async function(assert) {});
 
